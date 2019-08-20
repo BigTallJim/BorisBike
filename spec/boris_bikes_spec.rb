@@ -1,6 +1,4 @@
 require_relative "../lib/boris_bikes"
 
-describe "DockingStation" do
-
-
-  end
+describe DockingStation do
+end
