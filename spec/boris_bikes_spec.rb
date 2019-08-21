@@ -24,7 +24,11 @@ describe DockingStation do
     dock.dock_bike(bike2)
     expect(dock.release_bike).to eq (bike2)
     expect(dock.store).to eq ([bike1])
-
-
+  end
+  it "test if exception thrown when docking station contains a bike" do
+    dock = DockingStation.new
+    dock.dock_bike(Bike.new)
+    dock.dock_bike(Bike.new)
+    expect {dock.dock_bike(Bike.new)}.to raise_error("Docking Station Full")
   end
 end
