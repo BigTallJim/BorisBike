@@ -25,5 +25,6 @@ describe DockingStation do
     expect(dock.release_bike).to eq (bike2)
     expect(dock.store).to eq ([bike1])
 
+
   end
 end
