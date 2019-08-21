@@ -1,4 +1,4 @@
-require_relative "../lib/boris_bikes"
+require "boris_bikes"
 
 describe DockingStation do
   it "expect release of bike" do

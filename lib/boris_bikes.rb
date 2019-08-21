@@ -4,7 +4,6 @@ class DockingStation
 attr_accessor :store
   def initialize
     @store = []
-    @store = store
   end
 
   def release_bike

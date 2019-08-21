@@ -1,6 +1,4 @@
-require_relative "../lib/boris_bikes"
-
-
+require "boris_bikes"
 
 describe Bike do
   it "expect check of is bike working" do
