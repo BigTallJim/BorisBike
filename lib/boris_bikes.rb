@@ -5,3 +5,6 @@ class DockingStation
   end
 
 end
+
+class Bike
+end
