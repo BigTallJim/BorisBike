@@ -14,8 +14,7 @@ attr_accessor :store
   end
 
   def dock_bike(bike)
-    if @store.length ==2
-      p "came in here"
+    if @store.length ==20
       raise "Docking Station Full"
     else
       @store << bike
