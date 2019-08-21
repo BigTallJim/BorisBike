@@ -7,7 +7,10 @@ attr_accessor :store
   end
 
   def release_bike
-    Bike.new
+    if @store.length == 0
+      raise
+    end
+    return Bike.new
   end
 
   def dock_bike(bike)
