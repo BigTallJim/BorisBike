@@ -1,3 +1,4 @@
+$DEFAULT_CAPACITY = 20
 
 class DockingStation
 attr_accessor :store
@@ -22,7 +23,7 @@ attr_accessor :store
 
   private
   def is_full?
-    @store.length == 20 ? true : false
+    @store.length == $DEFAULT_CAPACITY ? true : false
   end
 
   def is_empty?
