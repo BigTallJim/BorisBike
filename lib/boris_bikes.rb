@@ -7,10 +7,10 @@ attr_accessor :store
   end
 
   def release_bike
-    if @store.length == 0
-      raise
-    end
-    return Bike.new
+    if @store.empty?
+      raise "No bikes available"
+    else @store.pop
+    end 
   end
 
   def dock_bike(bike)

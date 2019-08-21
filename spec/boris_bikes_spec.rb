@@ -14,6 +14,15 @@ describe DockingStation do
     is_expected.to respond_to(:dock_bike).with(1).argument
   end
   it "expect fail if no bike to release from new Docking Station" do
-    expect {DockingStation.new.release_bike}.to raise_error
+    expect {DockingStation.new.release_bike}.to raise_error("No bikes available")
+  end
+  it "test if docked bike is correctly retuned" do
+    dock = DockingStation.new
+    bike1 = Bike.new
+    bike2 = Bike.new
+    dock.dock_bike(bike1)
+    dock.dock_bike(bike2)
+    expect(dock.release_bike).to eq (bike2)
+    expect(dock.store).to eq ([bike1])
   end
 end
