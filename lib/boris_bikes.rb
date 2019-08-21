@@ -7,16 +7,12 @@ attr_accessor :store
   end
 
   def release_bike
-    if is_empty?
-      raise "No bikes available"
-    end
+    raise "No bikes available" if is_empty?
     @store.pop
   end
 
   def dock_bike(bike)
-    if is_full?
-      raise "Docking Station Full"
-    end
+    raise "Docking Station Full" if is_full?
     @store << bike
   end
 
