@@ -8,7 +8,7 @@ describe DockingStation do
     dock = DockingStation.new
     bike = Bike.new
     dock.dock_bike(bike)
-    expect(dock.release_bike.working?).to eq (true)
+    expect(dock.release_bike.working).to eq (true)
   end
   it "expect to respond to docking of bike with 1 argument" do
     is_expected.to respond_to(:dock_bike).with(1).argument
