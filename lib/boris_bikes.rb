@@ -2,7 +2,8 @@ $DEFAULT_CAPACITY = 20
 
 class DockingStation
 attr_accessor :store
-  def initialize
+  def initialize(station_size=20)
+    $DEFAULT_CAPACITY = station_size
     @store = []
   end
 

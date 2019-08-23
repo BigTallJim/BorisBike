@@ -32,6 +32,16 @@ describe DockingStation do
     expect {dock.dock_bike(Bike.new)}.to raise_error("Docking Station Full")
   end
 
+  it "Test create docking station when user sets size value of 30" do
+    dock = DockingStation.new(30)
+    expect($DEFAULT_CAPACITY).to eq (30)
+  end
+
+  it "Test create docking station defaulting size to 20" do
+    dock = DockingStation.new
+    expect($DEFAULT_CAPACITY).to eq (20)
+  end
+
 
 
 end
