@@ -9,7 +9,12 @@ attr_accessor :store
 
   def release_bike
     raise "No bikes available" if is_empty?
-    @store.pop
+    bike = @store.pop
+    if bike.is_working?
+      return bike
+    else
+      raise "No working boris bikes"
+    end
   end
 
   def dock_bike(bike)
@@ -34,5 +39,10 @@ class Bike
   end
   def set_to_broken
     @working = false
-  end 
+  end
+
+  def is_working?
+    @working
+  end
+
 end
