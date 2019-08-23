@@ -6,7 +6,7 @@ describe DockingStation do
   end
   it "test bike is returned from release bike if bikes exist" do
     dock = DockingStation.new
-    bike = Bike.new
+    bike = double(:bike)
     dock.dock_bike(bike)
     expect(dock.release_bike.working).to eq (true)
   end
@@ -18,8 +18,8 @@ describe DockingStation do
   end
   it "test if docked bike is correctly retuned" do
     dock = DockingStation.new
-    bike1 = Bike.new
-    bike2 = Bike.new
+    bike1 = double(:bike)
+    bike2 = double(:bike)
     dock.dock_bike(bike1)
     dock.dock_bike(bike2)
     expect(dock.release_bike).to eq (bike2)
@@ -28,8 +28,8 @@ describe DockingStation do
 
   it "test if exception thrown when docking station contains more than 20 bikes" do
     dock = DockingStation.new
-    $DEFAULT_CAPACITY.times {dock.dock_bike(Bike.new)}
-    expect {dock.dock_bike(Bike.new)}.to raise_error("Docking Station Full")
+    $DEFAULT_CAPACITY.times {dock.dock_bike(double(:bike))}
+    expect {dock.dock_bike(double(:bike))}.to raise_error("Docking Station Full")
   end
 
   it "Test create docking station when user sets size value of 30" do

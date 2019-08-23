@@ -12,7 +12,7 @@ describe Bike do
     expect(bike_1.set_to_broken).to eq(false)
   end
   it "Don't release a bike if it's broken" do
-    dock = DockingStation.new
+    dock = double(:dock)
     subject.set_to_broken
     dock.dock_bike(subject)
     expect {dock.release_bike}.to raise_error("No working boris bikes")
