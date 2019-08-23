@@ -1,14 +1,18 @@
 require "boris_bikes"
 
 describe DockingStation do
+  let(:bike) { double :bike }
+
   it "expect release of bike" do
     is_expected.to respond_to(:release_bike)
   end
   it "test bike is returned from release bike if bikes exist" do
+    allow(bike).to receive(:is_working?).and_return(true)
     dock = DockingStation.new
-    bike = double(:bike)
+    # bike = double(:bike)
     dock.dock_bike(bike)
-    expect(dock.release_bike.working).to eq (true)
+    # bike = dock.release_bike
+    expect(bike.is_working?).to eq (true)
   end
   it "expect to respond to docking of bike with 1 argument" do
     is_expected.to respond_to(:dock_bike).with(1).argument
@@ -17,9 +21,10 @@ describe DockingStation do
     expect {DockingStation.new.release_bike}.to raise_error("No bikes available")
   end
   it "test if docked bike is correctly retuned" do
+    allow(bike).to receive(:is_working?).and_return(true)
     dock = DockingStation.new
-    bike1 = double(:bike)
-    bike2 = double(:bike)
+    bike1 = bike
+    bike2 = bike
     dock.dock_bike(bike1)
     dock.dock_bike(bike2)
     expect(dock.release_bike).to eq (bike2)
@@ -28,8 +33,8 @@ describe DockingStation do
 
   it "test if exception thrown when docking station contains more than 20 bikes" do
     dock = DockingStation.new
-    $DEFAULT_CAPACITY.times {dock.dock_bike(double(:bike))}
-    expect {dock.dock_bike(double(:bike))}.to raise_error("Docking Station Full")
+    $DEFAULT_CAPACITY.times {dock.dock_bike(bike)}
+    expect {dock.dock_bike(bike)}.to raise_error("Docking Station Full")
   end
 
   it "Test create docking station when user sets size value of 30" do
@@ -42,6 +47,9 @@ describe DockingStation do
     expect($DEFAULT_CAPACITY).to eq (20)
   end
 
-
-
+  it "Don't release a bike if it's broken" do
+    allow(bike).to receive(:is_working?).and_return(false)
+    subject.dock_bike(bike)
+    expect {subject.release_bike}.to raise_error("No working boris bikes")
+  end
 end
